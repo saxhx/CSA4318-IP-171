@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 4: JavaScript and JSON</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .message {
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Section 1: Receive Text Message as Object -->
+    <h2>Receive Text Message</h2>
+    <button onclick="receiveMessage()">Get Message from Server</button>
+    <div id="receivedMessage" class="message">No message received.</div>
+
+    <hr>
+
+    <!-- Section 2: Convert Object Data to Text Message -->
+    <h2>Convert Object Data to Text Message</h2>
+    <div>
+        <input type="text" id="textMessage" placeholder="Enter your message">
+        <button onclick="sendMessage()">Send Message to Server</button>
+    </div>
+    <div id="sendResult" class="message">Message not sent.</div>
+
+    <hr>
+
+    <!-- Section 3: Show JSON Data -->
+    <h2>Show JSON Data</h2>
+    <button onclick="fetchJsonData()">Fetch JSON Data</button>
+    <div id="jsonData" class="message">No JSON data received.</div>
+
+    <script>
+        // Simulated server response for text message
+        function getServerMessage() {
+            return {
+                text: "Hello from the server!",
+                sender: "Server"
+            };
+        }
+
+        // Receive text message from server as object representation
+        function receiveMessage() {
+            const messageObj = getServerMessage(); // Simulate receiving data from the server
+            const receivedMessageDiv = document.getElementById("receivedMessage");
+            receivedMessageDiv.innerText = `${messageObj.sender}: ${messageObj.text}`;
+        }
+
+        // Simulate sending message to server
+        function sendMessage() {
+            const message = document.getElementById("textMessage").value;
+            const messageObj = {
+                text: message,
+                sender: "Client"
+            };
+            // Simulate sending the message object to the server
+            console.log("Sending message to server:", JSON.stringify(messageObj));
+            const sendResultDiv = document.getElementById("sendResult");
+            sendResultDiv.innerText = "Message sent: " + message;
+        }
+
+        // Simulated JSON data
+        function getJsonData() {
+            return [
+                { "id": 1, "name": "John Doe", "age": 30 },
+                { "id": 2, "name": "Jane Smith", "age": 25 }
+            ];
+        }
+
+        // Show JSON data received from server
+        function fetchJsonData() {
+            const jsonData = getJsonData(); // Simulate fetching JSON data from the server
+            const jsonDataDiv = document.getElementById("jsonData");
+            jsonDataDiv.innerText = JSON.stringify(jsonData, null, 2); // Format for readability
+        }
+    </script>
+
+</body>
+</html>
