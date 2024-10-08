@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 2: JavaScript Event Handling</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .dynamic-container {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+        .hover-box {
+            width: 200px;
+            height: 100px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            line-height: 100px;
+            margin: 20px 0;
+            transition: background-color 0.3s;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Activity 1: Event Handling -->
+    <h2>Change Style, Attribute, and Calculation</h2>
+    <div id="styleBox" class="hover-box">Style Box</div>
+    <button onclick="changeStyle()">Change Style</button>
+    
+    <h3>Change Attribute Example</h3>
+    <input type="text" id="inputField" placeholder="Enter new text">
+    <button onclick="changeAttribute()">Change Element Text</button>
+    <p id="changeText">Original Text</p>
+    
+    <h3>Perform Calculation Example</h3>
+    <input type="number" id="num1" placeholder="Number 1">
+    <input type="number" id="num2" placeholder="Number 2">
+    <button onclick="calculateSum()">Calculate Sum</button>
+    <p id="calculationResult"></p>
+
+    <hr>
+
+    <!-- Activity 2: Mouse Events -->
+    <h2>Mouse Events</h2>
+    <div class="hover-box" onmouseover="hoverEffect(this)" onmouseout="removeHoverEffect(this)">Hover Over Me</div>
+    <p id="loadMessage"></p>
+
+    <hr>
+
+    <!-- Activity 3: Dynamically Add Elements -->
+    <h2>Dynamically Add Elements</h2>
+    <input type="text" id="dynamicInput" placeholder="Add a new item">
+    <button onclick="addElement()">Add Item</button>
+    <div class="dynamic-container" id="dynamicList"></div>
+
+    <script>
+        // Activity 1: Change Style, Change Attribute, Perform Calculation
+        function changeStyle() {
+            var box = document.getElementById("styleBox");
+            box.style.backgroundColor = "orange";
+            box.style.transform = "scale(1.1)";
+        }
+
+        function changeAttribute() {
+            var newText = document.getElementById("inputField").value;
+            document.getElementById("changeText").innerText = newText;
+        }
+
+        function calculateSum() {
+            var num1 = parseFloat(document.getElementById("num1").value);
+            var num2 = parseFloat(document.getElementById("num2").value);
+            var sum = num1 + num2;
+            document.getElementById("calculationResult").innerText = "Sum: " + sum;
+        }
+
+        // Activity 2: Mouse Events
+        function hoverEffect(element) {
+            element.style.backgroundColor = "lightblue";
+        }
+
+        function removeHoverEffect(element) {
+            element.style.backgroundColor = "#4CAF50";
+        }
+
+        window.onload = function() {
+            document.getElementById("loadMessage").innerText = "Page Loaded!";
+        };
+
+        // Activity 3: Dynamically Add Elements
+        function addElement() {
+            var input = document.getElementById("dynamicInput").value;
+            if (input) {
+                var newDiv = document.createElement("div");
+                newDiv.innerText = input;
+                newDiv.style.padding = "5px";
+                newDiv.style.border = "1px solid #333";
+                newDiv.style.marginTop = "5px";
+                document.getElementById("dynamicList").appendChild(newDiv);
+                document.getElementById("dynamicInput").value = ""; // Clear input field
+            }
+        }
+    </script>
+
+</body>
+</html>
