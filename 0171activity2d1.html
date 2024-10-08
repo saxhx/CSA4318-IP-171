@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        form {
+            width: 50%;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input[type="text"], input[type="password"], input[type="email"], input[type="date"], select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+        input[type="range"] {
+            width: 100%;
+        }
+        .hobbies {
+            display: flex;
+            gap: 10px;
+        }
+        .button-logo {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+        }
+        .button-logo img {
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>User Input Form</h2>
+
+    <form action="#" method="post" enctype="multipart/form-data">
+        <!-- Name -->
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <!-- Password -->
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+
+        <!-- Email -->
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <!-- Gender -->
+        <label>Gender:</label>
+        <input type="radio" id="male" name="gender" value="Male" required>
+        <label for="male">Male</label>
+        <input type="radio" id="female" name="gender" value="Female" required>
+        <label for="female">Female</label>
+
+        <!-- Date of Birth -->
+        <label for="dob">Date of Birth:</label>
+        <input type="date" id="dob" name="dob" required>
+
+        <!-- Number Range -->
+        <label for="range">Select a number (1-10):</label>
+        <input type="range" id="range" name="range" min="1" max="10">
+
+        <!-- File Upload -->
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file">
+
+        <!-- Hobbies -->
+        <label>Hobbies:</label>
+        <div class="hobbies">
+            <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+            <label><input type="checkbox" name="hobbies" value="Traveling"> Traveling</label>
+            <label><input type="checkbox" name="hobbies" value="Gaming"> Gaming</label>
+        </div>
+
+        <!-- Country -->
+        <label for="country">Choose your country:</label>
+        <select id="country" name="country" required>
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+            <option value="UK">UK</option>
+            <option value="Australia">Australia</option>
+        </select>
+
+        <!-- Feedback -->
+        <label for="feedback">Feedback:</label>
+        <textarea id="feedback" name="feedback" rows="4" required></textarea>
+
+        <!-- Submit Button with Image -->
+        <button type="submit" class="button-logo">
+            <img src="autobot.png" alt="Logo"> Submit
+        </button>
+    </form>
+
+</body>
+</html>
