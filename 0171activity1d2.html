@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 1: JavaScript Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .container {
+            margin-bottom: 40px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            width: 200px;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Activity 1: Input and Output -->
+    <div class="container">
+        <h2>Input and Output Example</h2>
+        <input type="text" id="userInput" placeholder="Type something...">
+        <button onclick="showOutput()">Submit</button>
+        <p id="output"></p>
+    </div>
+
+    <script>
+        function showOutput() {
+            var input = document.getElementById("userInput").value;
+            document.getElementById("output").innerText = "You entered: " + input;
+        }
+    </script>
+
+    <!-- Activity 2: Input Validation -->
+    <div class="container">
+        <h2>User Input Validation</h2>
+        <input type="text" id="name" placeholder="Name">
+        <input type="text" id="phone" placeholder="Phone Number">
+        <input type="password" id="password" placeholder="Password">
+        <input type="email" id="email" placeholder="Email">
+        <button onclick="validateInput()">Validate</button>
+        <p id="validationResult" class="error"></p>
+    </div>
+
+    <script>
+        function validateInput() {
+            var name = document.getElementById("name").value;
+            var phone = document.getElementById("phone").value;
+            var password = document.getElementById("password").value;
+            var email = document.getElementById("email").value;
+            var errorMessage = '';
+
+            // Regular expressions
+            var nameRegex = /^[a-zA-Z\s]{2,}$/;
+            var phoneRegex = /^[0-9]{10}$/;
+            var passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/; // Minimum 8 characters, at least one letter and one number
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            // Validation checks
+            if (!nameRegex.test(name)) {
+                errorMessage += "Invalid name. Must be at least 2 characters long and only letters allowed.\n";
+            }
+            if (!phoneRegex.test(phone)) {
+                errorMessage += "Invalid phone number. Must be exactly 10 digits.\n";
+            }
+            if (!passwordRegex.test(password)) {
+                errorMessage += "Invalid password. Minimum 8 characters, at least one letter and one number.\n";
+            }
+            if (!emailRegex.test(email)) {
+                errorMessage += "Invalid email format.\n";
+            }
+
+            // Display validation results
+            if (errorMessage) {
+                document.getElementById("validationResult").innerText = errorMessage;
+            } else {
+                document.getElementById("validationResult").innerText = "All inputs are valid!";
+            }
+        }
+    </script>
+
+    <!-- Activity 3: Exception Handling -->
+    <div class="container">
+        <h2>Exception Handling Example</h2>
+        <input type="text" id="numberInput" placeholder="Enter a number">
+        <button onclick="handleException()">Submit</button>
+        <p id="exceptionResult"></p>
+    </div>
+
+    <script>
+        function handleException() {
+            var input = document.getElementById("numberInput").value;
+            var result = document.getElementById("exceptionResult");
+
+            try {
+                // Parse input and throw error if it's not a number
+                if (isNaN(input)) {
+                    throw new Error("Input is not a valid number.");
+                }
+                var number = parseFloat(input);
+                result.innerText = "You entered: " + number;
+            } catch (error) {
+                result.innerText = error.message; // Display the error message
+            }
+        }
+    </script>
+
+</body>
+</html>
