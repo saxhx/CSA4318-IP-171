@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 3</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .drag-container {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        #drag1 {
+            width: 100px;
+            height: 100px;
+            background-color: lightblue;
+            text-align: center;
+            line-height: 100px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+        #dropZone {
+            width: 200px;
+            height: 100px;
+            border: 2px dashed #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Audio and Video Controls</h2>
+
+    <!-- Audio with controls -->
+    <audio controls>
+        <source src="fein.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Video with controls -->
+    <video width="320" height="240" controls>
+        <source src="sample.mp4" type="video/mp4">
+        Your browser does not support the video element.
+    </video>
+
+    <h2>Drag and Drop Example</h2>
+
+    <!-- Drag and Drop Implementation -->
+    <div class="drag-container">
+        <!-- Draggable Element -->
+        <div id="drag1" draggable="true" ondragstart="drag(event)">Drag me</div>
+
+        <!-- Drop Zone -->
+        <div id="dropZone" ondrop="drop(event)" ondragover="allowDrop(event)">
+            Drop here
+        </div>
+    </div>
+
+    <script>
+        // Allow the drop action
+        function allowDrop(event) {
+            event.preventDefault();
+        }
+
+        // Drag the element
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+        }
+
+        // Drop the element in the drop zone
+        function drop(event) {
+            event.preventDefault();
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
+        }
+    </script>
+
+</body>
+</html>
