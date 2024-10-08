@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Activity 5: Shadows, Transitions, Transformations, Animations</title>
+    <style>
+        /* Activity 1: Shadows */
+        .shadow-box {
+            width: 300px;
+            height: 150px;
+            background-color: #4CAF50;
+            box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.5);
+            color: white;
+            text-align: center;
+            line-height: 150px;
+            margin: 20px;
+            font-size: 20px;
+        }
+
+        /* Activity 2: Transition and Transformation */
+        .transition-box {
+            width: 200px;
+            height: 200px;
+            background-color: #ff5722;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+            margin: 20px;
+            transition: width 0.5s, background-color 0.5s;
+        }
+
+        .transition-box:hover {
+            width: 300px;
+            background-color: #2196F3;
+        }
+
+        .transform-box {
+            width: 200px;
+            height: 200px;
+            background-color: #3f51b5;
+            margin: 20px;
+            transition: transform 0.5s;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+        }
+
+        .transform-box:hover {
+            transform: rotate(20deg) scale(1.2);
+        }
+
+        /* Activity 3: Animations */
+        @keyframes colorChange {
+            0% { background-color: #ffeb3b; }
+            25% { background-color: #ff5722; }
+            50% { background-color: #4CAF50; }
+            75% { background-color: #2196F3; }
+            100% { background-color: #ffeb3b; }
+        }
+
+        .animation-box {
+            width: 200px;
+            height: 200px;
+            background-color: #ffeb3b;
+            margin: 20px;
+            animation: colorChange 4s infinite;
+            color: white;
+            text-align: center;
+            line-height: 200px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Activity 1: Shadows Example -->
+    <div class="shadow-box">Shadow Box</div>
+
+    <!-- Activity 2: Transition and Transformation Example -->
+    <div class="transition-box">Hover Me (Transition)</div>
+    <div class="transform-box">Hover Me (Transform)</div>
+
+    <!-- Activity 3: Animations Example -->
+    <div class="animation-box">Color Changing Box</div>
+
+</body>
+</html>
